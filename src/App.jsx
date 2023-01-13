@@ -9,7 +9,7 @@ function App() {
 
   const detailComic = async () => {
     const comicDetailed = await MarvelApi.get("9408")
-    console.log(comicDetailed)
+    console.log(comicDetailed.data)
   }
 
   return (

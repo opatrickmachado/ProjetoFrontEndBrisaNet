@@ -1,2 +1,0 @@
-# brisa-marvel
-Desafio Brisanet

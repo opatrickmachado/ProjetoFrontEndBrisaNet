@@ -27,10 +27,18 @@ function ComicList(props) {
             <button onClick={() => { setPage(p => p + 1)}}>Próximo -&gt;</button>
             <br />
             <br />
-            { console.log(dataComics?.data.results )}
-            { dataComics?.data.results.map(comic =>
-                <ComicCardMini key={comic.id} ComicDetails={comic} />
-            )}
+            <div style={{
+                alignSelf: "stretch",
+                display: "flex",
+                flexWrap: "wrap",
+                flexDirection: "row",
+                justifyContent: "center",
+                paddingBottom: "24px",
+            }}>
+                { dataComics?.data.results.map(comic =>
+                    <ComicCardMini key={comic.id} ComicDetails={comic} />
+                )}
+            </div>
         </>
     )
 }

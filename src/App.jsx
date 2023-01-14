@@ -1,8 +1,7 @@
-import * as React from "react"
-import { ComicCardMini } from "./components"
 import { HomePage, ComicPage } from "./pages"
 import GlobalStyle from './theme/globalStyle'
 import { Routes, Route } from "react-router-dom"
+import { ComicList } from "./components"
 
 function App() {
 
@@ -14,7 +13,7 @@ function App() {
 
         <Routes>
           <Route path="/" element={<HomePage /> }>
-            <Route index element={<ComicCardMini />} />
+            <Route index element={<ComicList />} />
             <Route path="/comic/:id" element={<ComicPage />} />
           </Route>
         </Routes>

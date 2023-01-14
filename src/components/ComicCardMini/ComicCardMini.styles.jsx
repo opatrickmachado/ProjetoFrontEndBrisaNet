@@ -75,4 +75,4 @@ const CardBody = styled.div`
     }
 `
 
-export { CardContainer, ComicCard, CardComicLink, CardContentFrame, CardBody }
+export { CardContainer, ComicCard, CardContentFrame, CardBody }

@@ -1,7 +1,23 @@
-function HomePage (params) {
-    return(
+import { Outlet, Link } from "react-router-dom";
+import { Logo, HeaderHome, MainHome } from "./HomePage.style";
+
+function HomePage(props) {
+    return (
         <>
-            Home page
+            <HeaderHome>
+                <nav>
+                    <ul>
+                        <li>
+                            <Link to="/">
+                                <Logo src="/logo.svg" />
+                            </Link>
+                        </li>
+                    </ul>
+                </nav>
+            </HeaderHome>
+            <MainHome>
+                <Outlet />
+            </MainHome>
         </>
     )
 }

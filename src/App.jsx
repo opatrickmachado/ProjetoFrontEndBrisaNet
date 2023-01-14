@@ -1,38 +1,24 @@
+import * as React from "react"
 import { ComicCardMini } from "./components"
-import GlobalStyle from './theme/globalStyle';
+import { HomePage, ComicPage } from "./pages"
+import GlobalStyle from './theme/globalStyle'
+import { Routes, Route } from "react-router-dom"
 
 function App() {
 
   return (
     <div className="App">
       <>
+
         <GlobalStyle />
-        <ComicCardMini 
-          ComicDetails={
-            {
-              title: "Thor",
-              dates: [
-                {
-                  type: "onsaleDate",
-                  date: "1983-07-01T00:00:00-0400"
-                },
-                {
-                  type: "focDate",
-                  date: "-0001-11-30T00:00:00-0500"
-                },
-                {
-                  type: "unlimitedDate",
-                  date: "2013-04-29T00:00:00-0400"
-                },
-                {
-                  type: "digitalPurchaseDate",
-                  date: "2014-08-12T00:00:00-0400"
-                }
-              ]
-            }
-          }
-          ></ComicCardMini>
-        <ComicCardMini></ComicCardMini>
+
+        <Routes>
+          <Route path="/" element={<HomePage /> }>
+            <Route index element={<ComicCardMini />} />
+            <Route path="/comic/:id" element={<ComicPage />} />
+          </Route>
+        </Routes>
+
       </>
     </div>
   )

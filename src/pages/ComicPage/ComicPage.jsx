@@ -1,7 +1,12 @@
-function ComicPage (params) {
-    return(
+import { useParams } from "react-router-dom";
+
+function ComicPage(props) {
+
+    let { id } = useParams(); 
+
+    return (
         <>
-            Comic page
+            Mostrar detalhes aqui da comic #{id}
         </>
     )
 }

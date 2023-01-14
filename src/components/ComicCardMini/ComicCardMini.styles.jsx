@@ -2,10 +2,12 @@ import styled from "styled-components"
 
 const CardContainer = styled.div`
     box-sizing: border-box;
-    margin: 4px;
+    margin: 8px;
     width: 250px;
     padding: 16px;
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
     border: thin solid #333;
     background: #333;
 
@@ -33,15 +35,15 @@ const ComicCard = styled.div`
 `
 
 const CardContentFrame = styled.div`
-    box-shadow: 0 2px 12px 0 rgb(0 0 0 / 40%);
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
     margin: 0 0 20px 0;
     font-size: 0;
     transform-origin: 0 0;
     overflow: hidden;
+    align-self: flex-end;
+    height: 280px;
 
     &:hover {
-        box-shadow: 0 2px 12px 0 rgb(0 0 0 / 40%);
         transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 
         img {
@@ -51,15 +53,20 @@ const CardContentFrame = styled.div`
     }
 
     img {
+        max-height: 280px;
         height: 100%; 
         width: 100%; 
-        object-fit: cover;
+        object-fit: contain;
         transition: transform 0.6s cubic-bezier(.25,.8,.25,1);
     }
 `
 
 const CardBody = styled.div`
     padding: 2px 0 8px;
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    height: 100px;
 
     .card-body-headline {
         font-weight: 700;

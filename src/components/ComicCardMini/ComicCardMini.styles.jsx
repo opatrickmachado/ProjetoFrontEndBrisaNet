@@ -32,10 +32,6 @@ const ComicCard = styled.div`
     position: relative;
 `
 
-const CardComicLink = styled.a`
-    display: block;
-`
-
 const CardContentFrame = styled.div`
     box-shadow: 0 2px 12px 0 rgb(0 0 0 / 40%);
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);

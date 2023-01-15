@@ -4,6 +4,9 @@ const API_KEYS = {
         privateKey: "ceb4bbee09de72235f1a5f033e16d387af4472f7",
         URI: "https://gateway.marvel.com:443/v1/public"
     },
+    GoogleMaps: {
+        apiKey: "AIzaSyCHvnX89a6GGLO8Rm91nYP6YN3Og9yDk34",
+    },
 }
 
 export default API_KEYS

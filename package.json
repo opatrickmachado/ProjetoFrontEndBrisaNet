@@ -10,6 +10,7 @@
     "serve": "vite --port 80"
   },
   "dependencies": {
+    "@react-google-maps/api": "^2.17.1",
     "axios": "^1.2.2",
     "md5": "^2.3.0",
     "react": "^18.2.0",

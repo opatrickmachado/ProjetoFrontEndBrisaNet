@@ -49,7 +49,7 @@ function AddressMap() {
 
   }
 
-  return false ? (
+  return isLoaded ? (
     <GoogleMap
       mapContainerStyle={containerStyle}
       center={makerPoint}

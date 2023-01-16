@@ -1,7 +1,6 @@
 import { HomePage, ComicPage } from "./pages"
 import GlobalStyle from './theme/globalStyle'
 import { Routes, Route, Link } from "react-router-dom"
-import { AddressMap } from "./components"
 
 function App() {
 

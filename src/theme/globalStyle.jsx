@@ -86,6 +86,14 @@ const GlobalStyle = createGlobalStyle`
         background: #555; 
     }
 
+    .btn {
+        dsplay: inline-block;
+        font-size: 14px;
+        padding: 8px 16px;
+        border-radius: 2px;
+        margin: 0 10px;
+    }
+
 `;
 
 export default GlobalStyle;

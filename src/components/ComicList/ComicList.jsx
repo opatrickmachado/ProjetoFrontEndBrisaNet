@@ -20,9 +20,9 @@ function ComicList(props) {
 
     return(
         <>
-            <button onClick={() => { setPage(p => p-1 > 0 ? p - 1 : 1 )}}>&lt;- Anterior</button>
+            <button className="btn" onClick={() => { setPage(p => p-1 > 0 ? p - 1 : 1 )}}>❮ Anterior</button>
             <strong> Página atual: {page} </strong>
-            <button onClick={() => { setPage(p => p + 1)}}>Próximo -&gt;</button>
+            <button className="btn" onClick={() => { setPage(p => p + 1)}}>Próximo ❯</button>
             <br />
             <br />
             <div style={{

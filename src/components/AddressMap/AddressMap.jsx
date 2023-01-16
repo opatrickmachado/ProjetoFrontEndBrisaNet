@@ -1,6 +1,6 @@
 import { useCallback, useState, memo } from 'react'
 import { GoogleMap, useJsApiLoader, Marker, StandaloneSearchBox } from '@react-google-maps/api'
-import { MapNotLoad } from './AddressMap.style'
+import { MapNotLoad, InputAddress } from './AddressMap.style'
 import API_KEYS from '../../config/public-api-keys'
 
 const containerStyle = {
@@ -72,24 +72,9 @@ function AddressMap() {
           onPlacesChanged
         }
       >
-        <input
+        <InputAddress
           type="text"
-          placeholder="Digiteo endereço de entrega"
-          style={{
-            boxSizing: `border-box`,
-            border: `1px solid transparent`,
-            width: `320px`,
-            height: `40px`,
-            padding: `0 12px`,
-            borderRadius: `px`,
-            boxShadow: `0 1px 2px rgba(0, 0, 0, 0.3)`,
-            fontSize: `14px`,
-            outline: `none`,
-            textOverflow: `ellipses`,
-            position: "absolute",
-            left: "10px",
-            top: "10px",
-          }}
+          placeholder="Digite o endereço de entrega"
         />
       </StandaloneSearchBox>
       <Marker

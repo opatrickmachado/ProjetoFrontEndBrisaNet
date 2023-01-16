@@ -1,14 +1,14 @@
 import styled from "styled-components"
 
 const MapNotLoad = styled.div`
-    width: 400px;
-    height: 400px;
+    width: 600px;
+    height: 378px;
     background: url("images/404.png") center center no-repeat;
 `
 
 const InputAddress = styled.input`
-    width: 400px;
-    height: 40px;
+    width: 600px;
+    height: 46px;
     box-sizing: border-box;
     border: 1px solid transparent;
     padding: 0 12px;
@@ -21,9 +21,9 @@ const InputAddress = styled.input`
 `
 
 const InputAddressBar = styled.div`
-    padding-top: 8px;
+    padding-top: 1px;
     background: #151515;
-    width: 400px;
+    width: 100%;
     height: 56px;
     position: absolute;
     left: 0;

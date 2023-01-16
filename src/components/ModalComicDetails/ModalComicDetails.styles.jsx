@@ -133,4 +133,28 @@ const ButtonSendComic = styled.button`
   }
 `
 
-export { CoverComic, Modal, ButtonSendComic, ShowAddress }
+const CloseButton = styled.button`
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #2c2a2a;
+  font-size: 1.2rem;
+  text-align: center;
+  border-radius: 1px;
+  border: thin solid #333;
+  color: #999;
+  width: 72px;
+  height: 56px;
+  line-height: 0.5;
+  transition: all .3s ease-out;
+
+  &:hover {
+    background: #f23c27;
+    border: 2px solid #f23c27;
+    color: #fff;
+    cursor: pointer;
+    transition: all .3s ease-in;
+  }
+`
+
+export { CoverComic, Modal, ButtonSendComic, ShowAddress, CloseButton }

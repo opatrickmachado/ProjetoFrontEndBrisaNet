@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { AddressMap } from "../../components"
-import { CoverComic, Modal, ButtonSendComic, ShowAddress } from "./ModalComicDetails.styles"
+import { CoverComic, Modal, ButtonSendComic, ShowAddress, CloseButton } from "./ModalComicDetails.styles"
 
 function ModalComicDetails({ comic }) {
 
@@ -10,13 +10,14 @@ function ModalComicDetails({ comic }) {
     })
 
     const stopPropagationClick = function (ev) {
-        ev.stopPropagation()
-        console.log("cliclou no card")
+        if (ev.target.dataset.action !== "close")
+            ev.stopPropagation()
     }
 
     return (
         <Modal open onClick={stopPropagationClick} >
             <div className="center">
+                <CloseButton type="button" data-action="close">X</CloseButton>
                 <CoverComic>
                     <img src={`${comic?.thumbnail?.path}.${comic?.thumbnail?.extension}` || "/images/image-not-found.jpg"} />
                 </CoverComic>
@@ -46,11 +47,11 @@ function ModalComicDetails({ comic }) {
                 </div>
                 <div className="delivery-container">
                     <AddressMap setAddress={setDeliveryAddress} />
-                    { console.log(deliveryAddress) }
+                    {console.log(deliveryAddress)}
                     <div className="delivery-address">
                         <ShowAddress>
                             <strong>Endereço para entrega da revista</strong>
-                            <span className={deliveryAddress?.valid ? "active" : ""}>{ deliveryAddress?.text }</span>
+                            <span className={deliveryAddress?.valid ? "active" : ""}>{deliveryAddress?.text}</span>
                             <small>Para mudar de endereço, pesquise no mapa.<br /> Envio totalmente gratis.</small>
                         </ShowAddress>
                         <ButtonSendComic className={deliveryAddress?.valid ? "active" : ""}>

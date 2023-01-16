@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { AddressMap } from "../../components"
 import { CoverComic, Modal, ButtonSendComic, ShowAddress, CloseButton } from "./ModalComicDetails.styles"
+import nocover from "../../assets/nocover.jpg"
 
 function ModalComicDetails({ comic }) {
 
@@ -19,7 +20,9 @@ function ModalComicDetails({ comic }) {
             <div className="center">
                 <CloseButton type="button" data-action="close">X</CloseButton>
                 <CoverComic>
-                    <img src={`${comic?.thumbnail?.path}.${comic?.thumbnail?.extension}` || "/images/image-not-found.jpg"} />
+                    {comic?.thumbnail?.path ?
+                        <img src={`${comic?.thumbnail?.path}.${comic?.thumbnail?.extension}`} />
+                    :   <img src={nocover} />}
                 </CoverComic>
                 <div className="details">
                     <section>

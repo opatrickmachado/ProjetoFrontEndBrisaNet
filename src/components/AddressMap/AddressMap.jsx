@@ -1,6 +1,6 @@
 import { useCallback, useState, memo } from 'react'
 import { GoogleMap, useJsApiLoader, Marker, StandaloneSearchBox } from '@react-google-maps/api'
-import { MapNotLoad, InputAddress } from './AddressMap.style'
+import { MapNotLoad, InputAddress, InputAddressBar } from './AddressMap.style'
 import API_KEYS from '../../config/public-api-keys'
 
 const containerStyle = {
@@ -18,8 +18,9 @@ function AddressMap() {
 
   const [mapDelivery, setMapDelivery] = useState(null)
   const [searchBox, setSearchBox] = useState()
+  const [formmatedAddress, setFormmatedAddress] = useState(null)
   const [libraries] = useState(['places'])
-  const [makerPoint, setMakerPoint] = useState(startPoint)
+  const [makerPoint, setMakerPoint] = useState()
 
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
@@ -46,7 +47,7 @@ function AddressMap() {
       lat: place.geometry.location.lat(),
       lng: place.geometry.location.lng()
     })
-
+    setFormmatedAddress(place.formmatedAddress)
   }
 
   return isLoaded ? (
@@ -72,10 +73,12 @@ function AddressMap() {
           onPlacesChanged
         }
       >
-        <InputAddress
-          type="text"
-          placeholder="Digite o endereço de entrega"
-        />
+        <InputAddressBar>
+          <InputAddress
+            type="text"
+            placeholder="Digite o endereço de entrega"
+          />
+        </InputAddressBar>
       </StandaloneSearchBox>
       <Marker
         position={makerPoint}

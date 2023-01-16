@@ -168,4 +168,26 @@ const CloseButton = styled.button`
   }
 `
 
-export { CoverComic, Modal, ButtonSendComic, ShowAddress, CloseButton }
+const DeliveryMessage = styled.div`
+  color: #fff;
+  linhe-height: 1.5;
+  font-size: 18px;
+  width: 100%;
+  height: 540px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    padding: 24px;
+    color: #151515;
+    background: #fef200;
+    margin: 30px;
+    width: 100%;
+    text-align: center;
+  }
+  
+`
+
+export { CoverComic, Modal, ButtonSendComic, ShowAddress, CloseButton, DeliveryMessage }

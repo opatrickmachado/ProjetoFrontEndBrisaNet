@@ -1,9 +1,10 @@
 import styled from "styled-components"
+import i404 from "../../assets/404.png"
 
 const MapNotLoad = styled.div`
     width: 600px;
     height: 378px;
-    background: url("images/404.png") center center no-repeat;
+    background: url("${i404}") #fff center center no-repeat;
 `
 
 const InputAddress = styled.input`

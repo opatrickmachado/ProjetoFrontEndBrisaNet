@@ -1,5 +1,6 @@
 import { useCallback, useState, memo } from 'react'
 import { GoogleMap, useJsApiLoader, Marker, StandaloneSearchBox } from '@react-google-maps/api'
+import { MapNotLoad } from './AddressMap.style'
 import API_KEYS from '../../config/public-api-keys'
 
 const containerStyle = {
@@ -48,7 +49,7 @@ function AddressMap() {
 
   }
 
-  return isLoaded ? (
+  return false ? (
     <GoogleMap
       mapContainerStyle={containerStyle}
       center={makerPoint}
@@ -96,7 +97,7 @@ function AddressMap() {
         animation={window.google.maps.Animation.DROP}
       />
     </GoogleMap>
-  ) : <>Impossível carregar mapa</>
+  ) : <MapNotLoad />
 }
 
 export default memo(AddressMap)

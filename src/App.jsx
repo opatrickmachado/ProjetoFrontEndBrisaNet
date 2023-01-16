@@ -1,7 +1,7 @@
 import { HomePage, ComicPage } from "./pages"
 import GlobalStyle from './theme/globalStyle'
 import { Routes, Route, Link } from "react-router-dom"
-import { AddressMap, ComicList } from "./components"
+import { AddressMap } from "./components"
 
 function App() {
 
@@ -15,7 +15,6 @@ function App() {
 
         <Routes>
           <Route path="/" element={<HomePage /> }>
-            <Route index element={<ComicList />} />
             <Route path="/comic/:id" element={<ComicPage />} />
             <Route path="/map" element={<AddressMap />}/>
           </Route>

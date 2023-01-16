@@ -6,8 +6,6 @@ function ComicCardMini({ ComicDetails }) {
     const dataConvertida = (stringDate && stringDate[0] !== "-") ? new Date(stringDate) : false
     const dataFormatada = dataConvertida ? new Date(dataConvertida).toLocaleDateString("pt-BR", {year: 'numeric', month: 'long'}) : "Data não informada"
 
-    console.log(ComicDetails)
-
     return (
         <CardContainer>
             <ComicCard>

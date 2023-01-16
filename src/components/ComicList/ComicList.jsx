@@ -14,8 +14,6 @@ function ComicList(props) {
     }, [page])
 
     const getComicsFromApi = async () => {
-        console.log("Offset: " + offset)
-        console.log("Page: " + page)
         const allComics = await MarvelApi.get(`comics?limit=${limit}&offset=${offset}`)
         setDataComics(allComics.data)
     }

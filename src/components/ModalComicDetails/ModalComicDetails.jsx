@@ -15,6 +15,28 @@ function ModalComicDetails({ comic }) {
             ev.stopPropagation()
     }
 
+    const showGrouped = (obj, prop) => {
+        let grouped = obj.reduce(function (acc, item) {
+            let key = item[prop]
+            if (!acc[key]) {
+                acc[key] = []
+            }
+
+            acc[key].push(item)
+            return acc
+
+        }, [])
+
+        grouped = Object.entries(grouped)
+
+        return grouped.map((el) => (
+            <section key={Math.random()} className="half-line">
+                <h2>{el[0]}</h2>
+                <p>{el[1].map(v => v.name).join(", ")}</p>
+            </section>
+        ))
+    }
+
     return (
         <Modal open onClick={stopPropagationClick} >
             <div className="center">
@@ -22,35 +44,22 @@ function ModalComicDetails({ comic }) {
                 <CoverComic>
                     {comic?.thumbnail?.path ?
                         <img src={`${comic?.thumbnail?.path}.${comic?.thumbnail?.extension}`} />
-                    :   <img src={nocover} />}
+                        : <img src={nocover} />}
                 </CoverComic>
                 <div className="details">
                     <section>
-                        <h1>Avengers: War Across Time (2023) #1</h1>
+                        <h1>{comic?.title || "Título HQ #000"}</h1>
                     </section>
-                    <section className="half-line">
-                        <h2>Published:</h2>
-                        <p>January 11, 2023</p>
-                    </section>
-                    <section className="half-line">
-                        <h2>Writer:</h2>
-                        <p>Paul Levitz</p>
-                    </section>
-                    <section className="half-line">
-                        <h2>Penciler:</h2>
-                        <p>Alan Davis</p>
-                    </section>
-                    <section className="half-line">
-                        <h2>Cover Artist:</h2>
-                        <p>Alan Davis</p>
-                    </section>
-                    <section>
-                        <p>Thor! Iron Man! Captain America! Giant-Man & the Wasp! The classic Avengers against the Hulk on the streets of New York! It’s the beginning of a showdown with Kang the Conqueror that will span the centuries! Eisner Hall of Famer Paul Levitz makes his Marvel debut (unless you count a letter in Amazing Adventures #5) teamed with acclaimed artist Alan Davis!</p>
-                    </section>
+                    {comic?.creators?.items && showGrouped(comic?.creators?.items, "role")}
+                    {comic?.events?.items && showGrouped(comic?.events?.items, "role")}
+                    {comic?.description && (
+                        <section>
+                            <p>{comic?.description || "Descrição HQ"}</p>
+                        </section>
+                    )}
                 </div>
                 <div className="delivery-container">
                     <AddressMap setAddress={setDeliveryAddress} />
-                    {console.log(deliveryAddress)}
                     <div className="delivery-address">
                         <ShowAddress>
                             <strong>Endereço para entrega da revista</strong>

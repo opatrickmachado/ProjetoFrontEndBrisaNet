@@ -13,6 +13,8 @@ const CoverComic = styled.div`
     img {
       width: 249px;
       aspect-ratio: auto 550 / 845;
+      height: auto;
+      max-height: 378px;
     }
 `
 
@@ -40,10 +42,17 @@ const Modal = styled.dialog`
         section {
           margin-bottom: 16px;
         }
+
+        section:not(.half-line) {
+          clear: both;
+          float: none;
+          display: block;
+        }
   
         .half-line {
           width: 50%;
           display: inline-block;
+          float: left;
         }
   
         h1 {
@@ -54,6 +63,8 @@ const Modal = styled.dialog`
         h2 {
           font-size: 18px;
           margin-bottom: 8px;
+          color: #fef200;
+          text-transform: uppercase;
         }
     
         p {

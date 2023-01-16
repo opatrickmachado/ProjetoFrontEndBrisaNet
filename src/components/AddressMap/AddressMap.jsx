@@ -1,11 +1,12 @@
 import { useCallback, useState, memo } from 'react'
 import { GoogleMap, useJsApiLoader, Marker, StandaloneSearchBox } from '@react-google-maps/api'
 import { MapNotLoad, InputAddress, InputAddressBar } from './AddressMap.style'
+import MapDarkModeConfig from "./MapDarkModeConfig.json"
 import API_KEYS from '../../config/public-api-keys'
 
 const containerStyle = {
-  width: '400px',
-  height: '400px'
+  width: '600px',
+  height: '378px',
 }
 
 const startPoint = {

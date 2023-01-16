@@ -1,4 +1,4 @@
-import { useCallback, useState, memo } from 'react'
+import { useCallback, useState, memo, } from 'react'
 import { GoogleMap, useJsApiLoader, Marker, StandaloneSearchBox } from '@react-google-maps/api'
 import { MapNotLoad, InputAddress, InputAddressBar } from './AddressMap.style'
 import MapDarkModeConfig from "./MapDarkModeConfig.json"
@@ -15,11 +15,10 @@ const startPoint = {
   lng: -38.4608898
 }
 
-function AddressMap() {
+function AddressMap({ setAddress }) {
 
   const [mapDelivery, setMapDelivery] = useState(null)
   const [searchBox, setSearchBox] = useState()
-  const [formmatedAddress, setFormmatedAddress] = useState(null)
   const [libraries] = useState(['places'])
   const [makerPoint, setMakerPoint] = useState()
 
@@ -42,20 +41,20 @@ function AddressMap() {
   }, [])
 
   const onLoadSearchBox = ref => setSearchBox(ref)
-  const onPlacesChanged = () => {
+  const onPlacesChanged = async () => {
     let place = searchBox.getPlaces()[0]
-    setMakerPoint({
+    await setMakerPoint({
       lat: place.geometry.location.lat(),
       lng: place.geometry.location.lng()
     })
-    setFormmatedAddress(place.formmatedAddress)
+    setAddress({valid: true, text: place.formatted_address})
   }
 
   return isLoaded ? (
     <GoogleMap
       mapContainerStyle={containerStyle}
       center={makerPoint}
-      zoom={5}
+      zoom={19}
       onLoad={onLoad}
       onUnmount={onUnmount}
       options={

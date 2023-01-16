@@ -4,7 +4,10 @@ import { CoverComic, Modal, ButtonSendComic, ShowAddress } from "./ModalComicDet
 
 function ModalComicDetails({ comic }) {
 
-    const [deliberyAddress, setDeliberyAddress] = useState("Pesquise seu endereço no mapa")
+    const [deliveryAddress, setDeliveryAddress] = useState({
+        valid: false,
+        text: "Endereço não informado"
+    })
 
     const stopPropagationClick = function (ev) {
         ev.stopPropagation()
@@ -42,14 +45,15 @@ function ModalComicDetails({ comic }) {
                     </section>
                 </div>
                 <div className="delivery-container">
-                    <AddressMap />
+                    <AddressMap setAddress={setDeliveryAddress} />
+                    { console.log(deliveryAddress) }
                     <div className="delivery-address">
                         <ShowAddress>
                             <strong>Endereço para entrega da revista</strong>
-                            <span>Rua Pedro Pereira Chaves, 48. Fomento. Iguatu - CE.</span>
-                            <small>Para mudar de endereço, pesquise no mapa.</small>
+                            <span className={deliveryAddress?.valid ? "active" : ""}>{ deliveryAddress?.text }</span>
+                            <small>Para mudar de endereço, pesquise no mapa.<br /> Envio totalmente gratis.</small>
                         </ShowAddress>
-                        <ButtonSendComic className="active">
+                        <ButtonSendComic className={deliveryAddress?.valid ? "active" : ""}>
                             Enviar Revista
                         </ButtonSendComic>
                     </div>

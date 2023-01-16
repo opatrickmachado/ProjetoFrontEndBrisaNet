@@ -94,6 +94,12 @@ const ShowAddress = styled.div`
     span, small, strong {
       display: block;
     }
+    span {
+      color: #666;
+    }
+    span.active {
+      color: #fff;
+    }
     strong {
       font-size: 0.8rem;
       background: #fef200;
@@ -116,12 +122,14 @@ const ButtonSendComic = styled.button`
   color: #333;
   padding: 24px 36px;
   width: 100%;
+  transition: all .3s ease-out;
 
   &.active {
     background: #f23c27;
     border: 2px solid #f23c27;
     color: #fff;
     cursor: pointer;
+    transition: all .3s ease-in;
   }
 `
 

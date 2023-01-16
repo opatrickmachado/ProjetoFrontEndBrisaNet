@@ -10,13 +10,9 @@ function App() {
       <>
 
         <GlobalStyle />
-
-        <Link to="/map">Ver Mapa</Link>
-
         <Routes>
           <Route path="/" element={<HomePage /> }>
             <Route path="/comic/:id" element={<ComicPage />} />
-            <Route path="/map" element={<AddressMap />}/>
           </Route>
         </Routes>
 

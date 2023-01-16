@@ -6,36 +6,28 @@ const MapNotLoad = styled.div`
     background: url("images/404.png") center center no-repeat;
 `
 
-const InputAddress = (props) => {
-    const Bar = styled.div`
-        padding-top: 8px;
-        background: #151515;
-        width: 400px;
-        height: 56px;
-        position: absolute;
-        left: 0;
-        top: 0;
-    `
+const InputAddress = styled.input`
+    width: 400px;
+    height: 40px;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    padding: 0 12px;
+    border-radius: 1px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    font-size: 14px;
+    outline: none;
+    text-overflow: ellipsis;
+    position: relative;
+`
 
-    const Input = styled.input`
-        width: 400px;
-        height: 40px;
-        box-sizing: border-box;
-        border: 1px solid transparent;
-        padding: 0 12px;
-        border-radius: 1px;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-        font-size: 14px;
-        outline: none;
-        text-overflow: ellipsis;
-        position: relative;
-    `
+const InputAddressBar = styled.div`
+    padding-top: 8px;
+    background: #151515;
+    width: 400px;
+    height: 56px;
+    position: absolute;
+    left: 0;
+    top: 0;
+`
 
-    return(
-        <Bar>
-            <Input {...props} />
-        </Bar>
-    )
-}
-
-export { MapNotLoad, InputAddress }
+export { MapNotLoad, InputAddress, InputAddressBar }

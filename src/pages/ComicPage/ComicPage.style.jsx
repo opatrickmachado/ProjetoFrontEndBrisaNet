@@ -24,11 +24,6 @@ const FullScreen = styled.div`
     backdrop-filter: blur(6px);
     transition: all 0.3s ease-in;
     animation: 0.4s ${fadeIn} ease-in;
-
-    .center {
-        display: flex;
-        align-items: center;
-    }
 `
 
 export { FullScreen }

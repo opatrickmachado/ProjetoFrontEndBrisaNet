@@ -1,48 +1,102 @@
-import React from 'react'
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
- 
+import { useCallback, useState, memo } from 'react'
+import { GoogleMap, useJsApiLoader, Marker, StandaloneSearchBox } from '@react-google-maps/api'
+import API_KEYS from '../../config/public-api-keys'
+
 const containerStyle = {
   width: '400px',
   height: '400px'
-};
- 
-const center = {
-  lat: -3.745,
-  lng: -38.523
-};
- 
+}
+
+const startPoint = {
+  // Pereiro
+  lat: -6.0460626,
+  lng: -38.4608898
+}
+
 function AddressMap() {
+
+  const [mapDelivery, setMapDelivery] = useState(null)
+  const [searchBox, setSearchBox] = useState()
+  const [libraries] = useState(['places'])
+  const [makerPoint, setMakerPoint] = useState(startPoint)
+
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: "AIzaSyCHvnX89a6GGLO8Rm91nYP6YN3Og9yDk34"
+    googleMapsApiKey: API_KEYS.GoogleMaps.apiKey,
+    libraries,
   })
- 
-  const [map, setMap] = React.useState(null)
- 
-  const onLoad = React.useCallback(function callback(map) {
-    // This is just an example of getting and using the map instance!!! don't just blindly copy!
-    const bounds = new window.google.maps.LatLngBounds(center);
+
+  const onLoad = useCallback(function callback(map) {
+
+    const bounds = new window.google.maps.LatLngBounds(startPoint);
     map.fitBounds(bounds);
- 
-    setMap(map)
+
+    setMapDelivery(map)
   }, [])
- 
-  const onUnmount = React.useCallback(function callback(map) {
-    setMap(null)
+
+  const onUnmount = useCallback(function callback(map) {
+    setMapDelivery(null)
   }, [])
- 
+
+  const onLoadSearchBox = ref => setSearchBox(ref)
+  const onPlacesChanged = () => {
+    let place = searchBox.getPlaces()[0]
+    setMakerPoint({
+      lat: place.geometry.location.lat(),
+      lng: place.geometry.location.lng()
+    })
+
+  }
+
   return isLoaded ? (
-      <GoogleMap
-        mapContainerStyle={containerStyle}
-        center={center}
-        zoom={10}
-        onLoad={onLoad}
-        onUnmount={onUnmount}
+    <GoogleMap
+      mapContainerStyle={containerStyle}
+      center={makerPoint}
+      zoom={5}
+      onLoad={onLoad}
+      onUnmount={onUnmount}
+      options={
+        {
+          zoomControl: true,
+          mapTypeControl: false,
+          scaleControl: false,
+          streetViewControl: false,
+          overviewMapControl: false,
+        }
+      }
+    >
+      <StandaloneSearchBox
+        onLoad={onLoadSearchBox}
+        onPlacesChanged={
+          onPlacesChanged
+        }
       >
-        { /* Child components, such as markers, info windows, etc. */ }
-        <></>
-      </GoogleMap>
-  ) : <></>
+        <input
+          type="text"
+          placeholder="Digiteo endereço de entrega"
+          style={{
+            boxSizing: `border-box`,
+            border: `1px solid transparent`,
+            width: `320px`,
+            height: `40px`,
+            padding: `0 12px`,
+            borderRadius: `px`,
+            boxShadow: `0 1px 2px rgba(0, 0, 0, 0.3)`,
+            fontSize: `14px`,
+            outline: `none`,
+            textOverflow: `ellipses`,
+            position: "absolute",
+            left: "10px",
+            top: "10px",
+          }}
+        />
+      </StandaloneSearchBox>
+      <Marker
+        position={makerPoint}
+        animation={window.google.maps.Animation.DROP}
+      />
+    </GoogleMap>
+  ) : <>Impossível carregar mapa</>
 }
- 
-export default React.memo(AddressMap)
+
+export default memo(AddressMap)

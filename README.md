@@ -4,7 +4,7 @@ Passo 1: Clone o repositório
 
 Abra o terminal e execute o seguinte comando para clonar o repositório:
 ```
-git clone https://github.com/opatrickmachado/BrisanetAPIdaMarvel.git
+git clone https://github.com/opatrickmachado/ProjetoFrontEndBrisaNet.git
 ```
 Passo 2: Instale as dependências
 
